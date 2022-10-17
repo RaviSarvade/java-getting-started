@@ -24,7 +24,7 @@ steps:
 
 - task: owaspzap@1
   inputs:
-    threshold: 
+    aggressivemode: true
     scantype: 'targetedScan'
     url: 'https://testing-web-app-09.herokuapp.com/'
     port: '443'
