@@ -22,6 +22,14 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+
+- task: owaspzap@1
+  inputs:
+    aggressivemode: true
+    scantype: 'targetedScan'
+    url: 'https://testing-web-app-09.herokuapp.com/'
+    port: '443'
+    
 - bash: |
    sudo npm install -g handlebars-cmd
 
@@ -88,9 +96,3 @@ steps:
     testResultsFiles: 'owaspzap/test-results.xml'
   condition: always()
   
-- task: owaspzap@1
-  inputs:
-    aggressivemode: true
-    scantype: 'targetedScan'
-    url: 'https://testing-web-app-09.herokuapp.com/'
-    port: '443'
